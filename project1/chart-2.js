@@ -41,12 +41,15 @@ svg.selectAll("circle")
       .data(nestedByMonthBorough)
       .enter().append("circle")
       .attr("r", 3)
-      .attr("fill", "black")
-      .attr("cy", function(d) {
-        return yPositionScale(d.key)
+      .attr("fill", function)
+      .attr("cx", function(d) {
+        return xPositionScale(d.key)
       })
-      .attr("cx", 100)
-
+      .attr("cy", function(d) {
+        yPositionScale(d.values.value) //????
+      })
+      
+console.log(nestedByMonthBorough[1].values[1].value)
 
 
     var line = d3.line()
@@ -59,7 +62,7 @@ svg.selectAll("circle")
       .curve(d3.curveMonotoneX);
 
     // svg.append("path")
-    //       .datum(counts)
+    //       .data(counts)
     //       .attr("d", line)
     //       .attr("fill", "none")
     //       .attr("stroke", "LightSlateGrey")

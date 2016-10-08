@@ -62,8 +62,6 @@
         .call(yAxis);
 
 
-  console.log(counts)
-
  svg.selectAll("bar")
       .data(counts)
     .enter().append("rect")

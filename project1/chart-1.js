@@ -40,7 +40,6 @@
       counts.push(monthObj);
     }
    
-   console.log(counts)
     svg.selectAll("circle")
       .data(counts)
       .enter().append("circle")
