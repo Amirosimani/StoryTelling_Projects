@@ -31,7 +31,6 @@
       .entries(datapoints)
       .sort(function(a, b) { return a.key - b.key });
 
-
     var counts = [];
 
     for (var i = 0; i < nestedByMonth.length; i++) {
@@ -41,7 +40,7 @@
       counts.push(monthObj);
     }
    
-   
+   console.log(counts)
     svg.selectAll("circle")
       .data(counts)
       .enter().append("circle")

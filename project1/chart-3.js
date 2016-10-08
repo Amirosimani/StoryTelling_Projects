@@ -21,8 +21,8 @@
     .innerRadius(50);
 
   var labelArc = d3.arc()
-    .outerRadius(radius + 10)
-    .innerRadius(radius + 10);
+    .outerRadius(radius + 34)
+    .innerRadius(radius + 12);
 
   var pie = d3.pie()
   .value(function(d) { 
@@ -64,7 +64,6 @@
     g.append("path")
         .attr("d", arc)
         .attr("fill", function(d) {
-          // you need to use d.data
           return colorScale(d.data.borough);
         })
         .style("opacity", 0.8)

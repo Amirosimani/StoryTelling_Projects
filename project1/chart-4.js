@@ -36,10 +36,8 @@
       counts.push(monthObj);
     }
   
-  console.log(counts)
-
     xPositionScale.domain(counts.map(function(d) { return d.offense; }));
-    yPositionScale.domain([0, 7000]);
+    yPositionScale.domain([0, d3.max(counts, function(d) { return d.count; })]);
  
 
   svg.append("g")
@@ -52,19 +50,31 @@
   //     .call(d3.axisLeft(yPositionScale).ticks(10, "%"))
   //   .append("text")
   //     .attr("transform", "rotate(-90)")
-  //     .attr("y", 6)
+  //     .attr("y", 0)
   //     .attr("dy", "0.71em")
   //     .attr("text-anchor", "end")
   //     .text("Frequency");
 
-  svg.selectAll(".bar")
-    .data(counts)
+    var yAxis = d3.axisLeft(yPositionScale)
+      svg.append("g")
+        .attr("class", "axis y-axis")
+        .attr("transform", "translate(" + 20 + ",0)")
+        .call(yAxis);
+
+
+  console.log(counts)
+
+ svg.selectAll("bar")
+      .data(counts)
     .enter().append("rect")
-      .attr("class", "bar")
+      .style("fill", "LightSlateGrey")
       .attr("x", function(d) { return xPositionScale(d.offense); })
+      .attr("width", 50)
       .attr("y", function(d) { return yPositionScale(d.count); })
-      .attr("width", xPositionScale.bandwidth())
-      .attr("height", function(d) { return yPositionScale(d.count); })
+      .attr("height", function(d) { return height - yPositionScale(d.count); });
+
+
+
 
 
   }

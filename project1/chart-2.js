@@ -30,33 +30,22 @@
     var nestedByMonthBorough = d3.nest()
       .key(function(d) { return d.Month; })
       .key(function(d) { return d.Borough})
+      .rollup(function(leaves) { return leaves.length; })
       .entries(datapoints)
       .sort(function(a, b) { return a.key - b.key });
 
+console.log(nestedByMonthBorough)
      
-    var counts = [];
 
-    for (var i = 0; i < nestedByMonthBorough.length; i++) {
-      var monthObj = {}
-      monthObj['month'] = nestedByMonthBorough[i].key;
-      monthObj['count'] = nestedByMonthBorough[i].values.length;
-      counts.push(monthObj);
-    }
-   
-    svg.selectAll("circle")
-      .data(counts)
+svg.selectAll("circle")
+      .data(nestedByMonthBorough)
       .enter().append("circle")
       .attr("r", 3)
-      .attr("fill", function(d) {
-          return colorScale(d)
-        })
+      .attr("fill", "black")
       .attr("cy", function(d) {
-        return yPositionScale(d.count)
+        return yPositionScale(d.key)
       })
-      .attr("cx", function(d){
-        return xPositionScale(d.month)
-      })
-
+      .attr("cx", 100)
 
 
 
@@ -69,12 +58,12 @@
       })
       .curve(d3.curveMonotoneX);
 
-    svg.append("path")
-          .datum(counts)
-          .attr("d", line)
-          .attr("fill", "none")
-          .attr("stroke", "LightSlateGrey")
-          .attr("stroke-width", 3)
+    // svg.append("path")
+    //       .datum(counts)
+    //       .attr("d", line)
+    //       .attr("fill", "none")
+    //       .attr("stroke", "LightSlateGrey")
+    //       .attr("stroke-width", 3)
 
 
 
@@ -82,7 +71,7 @@
       svg.append("g")
         .attr("class", "axis x-axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
 
     var yAxis = d3.axisLeft(yPositionScale)
       svg.append("g")
