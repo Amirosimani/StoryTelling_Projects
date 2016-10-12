@@ -15,7 +15,7 @@
   var yPositionScale = d3.scaleLinear().range([height, 0]).domain([0,7000]);
 
   var colorScale = d3.scaleOrdinal()
-                .range(['#CD5C5C', '#F08080', '#FA8072', '#E9967A', '#FFA07A']);
+                .range(['#CD5C5C', '#5DE488', '#71748D', '#C70039', '#FFC300']);
 
 
   var parse = d3.timeParse("%d-%b-%y");
@@ -28,40 +28,51 @@
     if (error) throw error;
 
     var nestedByMonthBorough = d3.nest()
-      .key(function(d) { return d.Month; })
       .key(function(d) { return d.Borough})
+      .key(function(d) { return d.Month; })
       .rollup(function(leaves) { return leaves.length; })
       .entries(datapoints)
       .sort(function(a, b) { return a.key - b.key });
 
 console.log(nestedByMonthBorough)
+
+svg.selectAll(".borough-group")
+  .data(nestedByMonthBorough)
+  .enter().append("g")
+  .each(function(d) {
+    var g = d3.select(this);
+    console.log("borough is", d.key);
+    console.log(d.values);
+
+    g.selectAll(".dot")
+          .data(d.values)
+          .enter().append("circle")
+          .attr("class", "dot")
+          .attr("r", 3)
+          .attr("fill", colorScale(d.key))
+          .attr("cx", function(d) {
+            return xPositionScale(d.key) // grouped by month
+          })
+          .attr("cy", function(d) {
+            return yPositionScale(d.value) // rolled-up value
+          })
+
+  })
      
-
-svg.selectAll("circle")
-      .data(nestedByMonthBorough)
-      .enter().append("circle")
-      .attr("r", 3)
-      .attr("fill", function)
-      .attr("cx", function(d) {
-        return xPositionScale(d.key)
-      })
-      .attr("cy", function(d) {
-        yPositionScale(d.values.value) //????
-      })
       
-console.log(nestedByMonthBorough[1].values[1].value)
+//console.log(nestedByMonthBorough[1].values[1].value)
 
 
-    var line = d3.line()
-      .x(function(d) {
-        return xPositionScale(d.month)
-      })
-      .y(function(d) {
-        return yPositionScale(d.count)
-      })
-      .curve(d3.curveMonotoneX);
+    // var line = d3.line()
+    //   .x(function(d) {
+    //     return xPositionScale(d.month)
+    //   })
+    //   .y(function(d) {
+    //     return yPositionScale(d.count)
+    //   })
+    //   .curve(d3.curveMonotoneX);
 
-    // svg.append("path")
+    // // svg.append("path")
     //       .data(counts)
     //       .attr("d", line)
     //       .attr("fill", "none")
