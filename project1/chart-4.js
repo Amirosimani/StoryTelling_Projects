@@ -11,7 +11,7 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-  var xPositionScale = d3.scaleBand().range([20, width]);
+  var xPositionScale = d3.scaleBand().range([20, width]).padding(0.3);
   var yPositionScale = d3.scaleLinear().range([height, 0]);
 
    d3.queue()
@@ -67,7 +67,7 @@
     .enter().append("rect")
       .style("fill", "LightSlateGrey")
       .attr("x", function(d) { return xPositionScale(d.offense); })
-      .attr("width", 50)
+      .attr("width", xPositionScale.bandwidth())
       .attr("y", function(d) { return yPositionScale(d.count); })
       .attr("height", function(d) { return height - yPositionScale(d.count); });
 
