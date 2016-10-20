@@ -57,30 +57,30 @@ svg.selectAll(".borough-group")
             return yPositionScale(d.value) // rolled-up value
           })
 
+
+    var line = d3.line()
+      .x(function(d) {
+        console.log(d)
+        return xPositionScale(d.key)
+      })
+      .y(function(d) {
+                console.log(d)
+
+        return yPositionScale(d.value)
+      })
+      .curve(d3.curveMonotoneX);
+
+    g.append("path")
+          .datum(d.values)
+          .attr("d", line)
+          .attr("fill", "none")
+          .attr("stroke", colorScale(d.key))
+          .attr("stroke-width", 2)
+
+
   })
      
       
-//console.log(nestedByMonthBorough[1].values[1].value)
-
-
-    // var line = d3.line()
-    //   .x(function(d) {
-    //     return xPositionScale(d.month)
-    //   })
-    //   .y(function(d) {
-    //     return yPositionScale(d.count)
-    //   })
-    //   .curve(d3.curveMonotoneX);
-
-    // // svg.append("path")
-    //       .data(counts)
-    //       .attr("d", line)
-    //       .attr("fill", "none")
-    //       .attr("stroke", "LightSlateGrey")
-    //       .attr("stroke-width", 3)
-
-
-
     var xAxis = d3.axisBottom(xPositionScale);
       svg.append("g")
         .attr("class", "axis x-axis")
