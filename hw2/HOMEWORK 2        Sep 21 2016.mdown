@@ -1,0 +1,42 @@
+# HOMEWORK 2        Sep 21 2016
+
+### Amirhossein Imani ai2335   
+--------
+1,2,3. Describe data type of columns. What are 4 planar or visual variables I could use to describe this column? How to aggregate data
+
++--------------+--------------+----------------+------------------------------+
+| ** Column ** |  ** Q1 **    |    ** Q2 **    |            ** Q3             |
++==============+==============+================+==============================|
+| Name         |    Nominal   |  - planar      | Doesnt make snese to         |
+|              |              |  - texture     | aggregate                    |
+|              |              |  - color       |                              |
+|              |              |  - shape       |                              |
++--------------+--------------+----------------|------------------------------|
+| Animal       |    Nominal   |  - planr       | Count how many of each       |
+|              |              |  - texture     | value are insde              |
+|              |              |  - color       |                              |
+|              |              |  - shape       |                              |
++--------------+--------------+----------------|------------------------------|
+|Favorite_food |    Nominal   |  - planar      | Count how many of each       |
+|              |              |  - texture     | value are insde              |
+|              |              |  - color       |                              |
+|              |              |  - shape       |                              |
++--------------+--------------+----------------|------------------------------|
+| Age          |  Quantitave  |  - planar      | Get an average of aggregated |
+|              |              |  - size        | values of a nominal column   |
+|              |              |  - birghtness  |                              |
++--------------+--------------+----------------|------------------------------|
+| lbs          |  Quantitave  |  - planar      | - Get an average of          |
+|              |              |  - size        | values of a nominal column   |
+|              |              |  - birghtness  | - Add up the numbers         |
++--------------+--------------+----------------|------------------------------|
+|times_arrested|    Ordinal   |  - planar      | - Get an average of          |
+|              |              |  - size        | values of a nominal column   |
+|              |              |  - birghtness  | - Add up the numbers         |
++--------------+--------------+----------------|------------------------------|
+
+4. If it's a quantitative column, give an example of how you could change it into an ordinal column.
+"Age" and "lbs" are our quantitative columns. One way is to change "Age" to age groups for cats and dogs respectively. Something like Puppy:[0-3], Young dogs:[4-9], seniors:[10,20] for dogs.
+for weight also one way is to group weights for dogs and cats respectively to skinny, normal, chubbo!
+
+

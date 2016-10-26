@@ -12,7 +12,7 @@
 
 
   var xPositionScale = d3.scaleLinear().range([20, width]).domain([1,12]);
-  var yPositionScale = d3.scaleLinear().range([height, 0]).domain([0,7000]);
+  var yPositionScale = d3.scaleLinear().range([height, 0]).domain([0,2000]);
 
   var colorScale = d3.scaleOrdinal()
                 .range(['#CD5C5C', '#5DE488', '#71748D', '#C70039', '#FFC300']);
