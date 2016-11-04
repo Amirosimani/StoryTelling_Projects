@@ -1,121 +1,137 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Debates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-.axis--x path {
-  display: none;
-}
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
 
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-/*
-svg.append("image")
-                    .attr("xlink:href", "trump.png")
-                    .attr('width', 80)
-                    .attr('height', 80)
-                    .attr('x', 100)
-                    .attr('y', 600)*/
+    <!-- Demo styles -->
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 600px;
+        padding-left: 200px;
+        position: relative;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 2;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
 
-</style>
-<svg width="960" height="500"></svg>
-<script src="//d3js.org/d3.v4.min.js"></script>
-<script>
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
 
+    #graphic {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        left: 0;
+    }
 
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = svg.attr("width") - margin.left - margin.right,
-    height = svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    #graphic svg {
+        background: #f1f1f1;
+    }
 
-var x = d3.scaleLinear().range([0, width]).domain([0,6000]),
-    y = d3.scaleLinear().range([height, 0]).domain([0,1]),
-    z = d3.scaleOrdinal().range(["#7d8e74", "#f2e6c6", "#dfae43", "#ccd7dd", "#489eba", "#a15b1c" , "#001126"]);
+    #graphic2 {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        left: 616px;
+    }
 
-var line = d3.line()
-    .curve(d3.curveMonotoneX)
-    .x(function(d) { return x(d.frame); })
-    .y(function(d) { return y(d.score); });
+    #graphic2 svg {
+        background: #c1f1f1;
+    }
 
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div id="graphic"></div>
+    <div id="graphic2"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" id="slide-1">Slide 1</div>
+            <div class="swiper-slide" id="slide-2">Slide 2</div>
+            <div class="swiper-slide" id="slide-3">Slide 3</div>
+<!--             <div class="swiper-slide" id="slide-4">Slide 4</div>
+            <div class="swiper-slide" id="slide-5">Slide 5</div>
+            <div class="swiper-slide" id="slide-6">Slide 6</div>
+            <div class="swiper-slide" id="slide-7">Slide 7</div>
+            <div class="swiper-slide" id="slide-8">Slide 8</div>
+            <div class="swiper-slide" id="slide-9">Slide 9</div>
+            <div class="swiper-slide" id="slide-10">Slide 10</div>
+ -->        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 
-d3.csv("hillary.csv", type, function(error, data) {
-  if (error) throw error;
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.min.js"></script>
 
-  var sorted = data.sort(function(a, b) {
-        return a.frame_time - b.frame_time;
+    <!-- Initialize Swiper -->
+    <script>
 
-    })  
+    // If we've moved to a new slide, fire to 'slideto' event
+    // If we've left a slide, fire the 'slidefrom' event
+    var currentSlide, lastSlide;
 
-  var emotions = data.columns.slice(1).map(function(id) {
-    return {
-      id: id,
-      values: data.map(function(d) {
-        return {frame: d.frame_time, score: d[id]};
-      })
-    };
-  });
+    var slideInEvent = new Event('slidein'),
+        slideOutEvent = new Event('slideout');
 
- //2357 niki's email
+    function testSlideChange(swiper, progress) {
+        currentSlide = swiper.slides[swiper.activeIndex];
+        if(currentSlide && (currentSlide != lastSlide)) {
+            currentSlide.dispatchEvent(slideInEvent);
+            if(lastSlide) lastSlide.dispatchEvent(slideOutEvent);
+        }
+        lastSlide = currentSlide;
+    }
 
-  z.domain(emotions.map(function(c) { return c.id; }));
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        onProgress: testSlideChange,
+        direction: 'vertical',
+        freeMode: true,
+        slidesPerView: 1,
+        slidesPerColumn: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        mousewheelControl: true
+    });
+    </script>
 
-  g.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 
-  g.append("g")
-      .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y))
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
-      .attr("fill", "#000")
-      .text("Emotion Score");
+    <script src="chart-1.js"></script>
 
-
-  var emotion = g.selectAll(".emotion")
-    .data(emotions)
-    .enter().append("g")
-    .attr("class", "emotion")
-    .each(function(d) {
-      var g = d3.select(this);
-      	  g.selectAll("circle")
-      	  .data(d.values)
-          .enter().append("circle")
-          .attr("class", "dot")
-          .attr("r", 2)
-          .attr("fill", function() { return z(d.id)})
-          .attr("cx", function(d) { return x(d.frame)})
-          .attr("cy", function(d) { return y(d.score)})
-         console.log("emotion is", d.id)
-         console.log("frame time is", d.values)
-      })
-
-  // emotion.append("path")
-  //     .attr("class", "line")
-  //     .attr("d", function(d) { return line(d.values); })
-  //     .style("stroke", function(d) { return z(d.id); });
-
-
-
-  emotion.append("text")
-      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.frame) + "," + y(d.value.score) + ")"; })
-      .attr("x", 3)
-      .attr("dy", "0.35em")
-      .style("font", "10px sans-serif")
-      .text(function(d) { return d.id; });
-
-});
-
-function type(d, _, columns) {
-  for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
-  return d;
-}
-
-</script>
+</body>
+</html>
