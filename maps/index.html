@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<html lang="en">
+<head>
+  <title> Homework #9 </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style> /* set the CSS */
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: #77dd77;
+  opacity: 0.4;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+</style>
+  <body>
+    <h1>Homework 10: Basic maps</h1>
+    
+    <p>There are two TopoJSON files available to you if you'd like to use them: <strong>world.topojson</strong> and <strong>us.topojson</strong>. Helpful videos can be found <a href="https://www.youtube.com/playlist?list=PLewNEVDy7gq2-YdYlHxWwFDZHNN5hUIaY">here</a>.</p>
+
+    <p>Ask questions in <strong>#storytelling</strong>, as always.</p>
+
+    <h2>Map 1: Earthquakes!</h2>
+
+    <p>Draw an earthquake map of the world using <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php">the CSV feeds from USGS</a>. Size of each earthquake's representation should relate to size of the earthquake.</p>
+    <p>You can choose whether you're only displaying large ones, and whether they're over the past day/hour/etc. You <strong>must</strong> have at least 5 dots show up on your map, though.</p>
+
+    <div id="map-1"></div>
+
+    <h2>Map 2: Beer!</h2>
+    <p>Make a map of <em>American</em> breweries based on the list at <a href="https://github.com/brewdega/open-beer-database-dumps/blob/master/dumps/breweries.csv">this dataset</a>. You'll need to geocode them to produce lat/long from addresses, I recommend using <a href="http://geocod.io">geocod.io</a>.</p>
+    <p>When you hover over a brewery you should get a tooltip describing the brewery, and if you click it should open their website in a new window. Feel free to zoom in on a particular area of the country if you'd like.</p>
+
+    <div id="map-2"></div>
+
+    <h2>Map 3: Hexes!</h2>
+
+    <p>You can find really weird lists of things at <a href="http://www.poi-factory.com/poifiles">POI Factory</a>. Compare the distributions of two sets of their data with a <a href="https://en.wikipedia.org/wiki/Choropleth_map">choropleth</a> map using <a href="https://github.com/d3/d3-hexbin">d3-hex</a>.</p>
+    <p>For example, you could compare Cracker Barrel restaurant locations vs. In And Out Burger locations - the more Cracker Barrels, the redder the hex. The More In And Outs, the greener the bin. Overlap will be rather ugly but that's just how it has to be for now!</p>
+    <p><strong>Location of Bank of America(Red) vs Places of Worship (Green)</strong></p>
+
+    <div id="map-3"></div>
+
+
+    <!-- This is D3, our graphing library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+    <!-- A new library! Topojson! -->
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+
+    <!-- Another new library! d3 hexbin -->
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+
+
+    <!-- Now we include our actual visualization -->
+    <script src="map-1.js"></script>
+    <script src="map-2.js"></script>
+    <script src="map-3.js"></script>
+  </body>
+</html>

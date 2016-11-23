@@ -1,0 +1,18 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2016-11-14T00:34:22.530Z,-42.5856,173.2838,10,6.5,mww,,56,0.253,1.13,us,us100077hw,2016-11-14T02:36:10.148Z,"38km WSW of Kaikoura, New Zealand",earthquake,4.4,1.7,,,reviewed,us,us
+2016-11-13T13:31:26.630Z,-42.2914,173.6933,8.29,6.2,mww,,61,0.169,0.69,us,us100077aj,2016-11-14T00:53:40.275Z,"12km N of Kaikoura, New Zealand",earthquake,4.3,3.2,,,reviewed,us,us
+2016-11-13T11:32:07.310Z,-42.2536,173.6298,10,6.5,mww,,31,0.175,1.77,us,us10007795,2016-11-13T23:23:55.905Z,"17km NNW of Kaikoura, New Zealand",earthquake,4.5,1.7,,,reviewed,us,us
+2016-11-13T11:02:56.970Z,-42.7568,173.0766,23,7.8,mww,,143,0.482,0.88,us,us1000778i,2016-11-14T02:20:26.325Z,"53km NNE of Amberley, New Zealand",earthquake,3.3,2,,,reviewed,us,us
+2016-11-11T21:42:59.300Z,38.4993,141.5611,44.83,6.2,mwb,,40,0.875,0.9,us,us1000770m,2016-11-13T11:45:22.431Z,"24km ENE of Ishinomaki, Japan",earthquake,6.3,2.8,0.041,58,reviewed,us,us
+2016-11-08T04:55:44.250Z,-36.5806,-73.6355,17.3,5.9,mwr,,124,0.394,1.08,us,us10007681,2016-11-11T02:46:51.424Z,"48km WNW of Talcahuano, Chile",earthquake,6.5,5.1,0.043,53,reviewed,us,us
+2016-11-07T01:44:24.930Z,35.9837,-96.7982,5,5,mww,,48,0.013,0.24,us,us100075y8,2016-11-13T23:39:26.971Z,"2km W of Cushing, Oklahoma",earthquake,0.7,1.7,,,reviewed,us,us
+2016-11-04T16:20:43.940Z,-35.1033,-70.9964,90.79,6.4,mwp,,60,0.357,1.1,us,us1000744u,2016-11-09T22:45:51.189Z,"25km ESE of Curico, Chile",earthquake,6.5,5.5,0.041,73,reviewed,us,us
+2016-11-02T04:26:54.200Z,36.3077,-96.6472,2.56,4.5,mwr,,65,0.136,0.62,us,us100073m6,2016-11-08T20:25:20.620Z,"14km ESE of Pawnee, Oklahoma",earthquake,1.2,6.7,0.037,70,reviewed,us,us
+2016-10-31T00:20:11.380Z,3.4238,-74.4899,33,5.6,mww,,35,1.421,1.01,us,us1000735j,2016-11-14T00:38:47.355Z,"35km E of Colombia, Colombia",earthquake,4.8,1.7,,,reviewed,us,us
+2016-10-30T06:40:19.200Z,42.8547,13.0884,10,6.6,mww,,28,0.181,1.16,us,us1000731j,2016-11-13T18:29:29.145Z,"6km N of Norcia, Italy",earthquake,5.1,1.7,,,reviewed,us,us
+2016-10-26T19:18:08.320Z,42.9343,13.0434,10,6.1,mww,,21,0.249,1.24,us,us1000725y,2016-11-04T22:39:44.251Z,"3km W of Visso, Italy",earthquake,4.9,1.7,,,reviewed,us,us
+2016-10-26T17:10:37.880Z,42.857,13.0228,10,5.5,mww,,31,0.071,0.91,us,us20007guy,2016-10-31T08:16:38.525Z,"8km ESE of Sellano, Italy",earthquake,4.9,1.7,,,reviewed,us,us
+2016-10-21T05:07:23.010Z,35.3676,133.8148,5.7,6.2,mww,,23,0.68,0.73,us,us20007fta,2016-11-12T22:33:37.617Z,"7km S of Kurayoshi, Japan",earthquake,4.3,3.3,,,reviewed,us,us
+2016-10-19T00:26:01.090Z,-4.8626,108.1627,614,6.6,mww,,16,2.022,1.21,us,us20007f7j,2016-11-01T03:15:18.955Z,"161km NNE of Pamanukan, Indonesia",earthquake,6.6,1.9,,,reviewed,us,us
+2016-10-17T06:14:58.370Z,-6.0526,148.8617,35,6.9,mwp,,16,3.733,1.29,us,us20007ept,2016-11-10T18:00:39.623Z,"78km WNW of Kandrian, Papua New Guinea",earthquake,6.6,1.8,,,reviewed,us,us
+2016-10-15T08:03:38.140Z,-4.2701,150.3605,442,6.3,mww,,18,1.661,0.98,us,us20007ebu,2016-11-09T10:21:45.152Z,"143km N of Kimbe, Papua New Guinea",earthquake,9.3,1.9,,,reviewed,us,us
