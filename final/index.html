@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="AirBnB and New York City">
+    <meta name="author" content="Amir Imani">
+
+    <title>Visualizing the effect of AirBnB on New York City</title>
+
+<!--     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-71629601-1', 'auto');
+      ga('send', 'pageview');
+    </script> -->
+
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/histogram.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Visualizing New York City AirBnB Data</h1>
+        <p id="bs-overrides" class="lead">Explore the effect of AirBnB on New York City</p>
+        <p id="bs-overrides" class="credits">Amir Imani &middot; December, 2016</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>here explain the context of new york city vs airbnb</p>
+        </div>
+      </div>
+
+      <div class="row top20">
+        <div class="col-xs-12">
+          <div class="embed-responsive checkin-map" style="position: relative; overflow: hidden; padding-bottom: 42%;">
+            <iframe class="embed-responsive-item" src="map.html"></iframe>
+          </div>
+        </div>
+        <div class="col-xs-12 text-center">
+          <p class="caption"><strong> When did a place get a reviewed</strong> Every reviews since 2010 </p>
+        </div>
+      </div>
