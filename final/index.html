@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Marvel vs DC - a D3.js take</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/favicon.ico"/>
+    <!-- Font Awesome -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.css"/>
+    <!-- Animate css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css"/>
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/easy-autocomplete.min.css">
+    <link rel="stylesheet" href="assets/css/easy-autocomplete.themes.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    
+    <!-- Main Styles -->
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/scrolly-style.css"/>
+    
+    <!-- Fonts -->
+    <!-- Open Sans for body font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- Cabin for Title -->
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    
+    <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        
+        #newlanding
+        {
+          font-family: 'News Cycle', sans-serif;
+        }
+
+        #chart_1a_bar .bar,
+        #chart-1a_bar .bar  {
+            fill: lightblue;
+        }
+
+        #chart_1a_bar .bar:hover,
+        #chart_1a_bar .bar:hover {
+            fill: steelblue;
+        }
+        .d3-tip {
+            line-height: 1;
+            border: 1
+            font-weight: normal;
+            padding: 12px;
+            background: rgba(250, 250, 250, 250);
+            border-radius: 4px;
+            z-index: 20;
+        }
+
+        .d3-tip:after {
+            box-sizing: border-box;
+            display: inline;
+            font-size: 10px;
+            width: 100%;
+            line-height: 1;
+            color: rgba(250, 250, 250, 250);
+            content: "\25BC";
+            position: absolute;
+            text-align: center;
+        }
+
+        .d3-tip.n:after {
+            margin: -1px 0 0 0;
+            top: 100%;
+            left: 0;
+        }
+        .marvel{
+            background-image: url("assets/images/marvel-characters.png");
+            z-index: 5;
+        }
+        .dc{
+            background-image: url("assets/images/dc-characters.png");
+            z-index: 5;
+        }
+        span.newer{
+            color: brown;
+        }
+
+        .backimage {
+           background-size: cover;
+           background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('assets/images/marvelvsdc.jpg');
+           background-position:center;
+           height: 500px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1> Bringing Data to the Debate</h1>
+        <p id="bs-overrides" class="lead">Explore Airbnb listings data in New York City</p>
+        <p id="bs-overrides" class="credits">Amir Imani &middot; December, 2016</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p> Regulators and affordable housing advocates around the world worry that Airbnb is making it easier to illegally rent out apartment units for short stints to travelers, taking units off the market for full-time residents and driving housing costs higher. Rich Azzopardi, a spokesman for New York. Gov. Andrew M. Cuomo told <a href="http://www.nytimes.com/2016/10/22/technology/new-york-passes-law-airbnb.html" > the New York Times </a> that illegal rentals “compromise efforts to maintain and promote affordable housing by allowing those units to be used as unregulated hotels.” </p>
+
+          <h4> Since 2010, it has been illegal in New York to rent out a whole apartment for fewer than 30 days. But some tenants and landlords have ignored those rules and have been using Airbnb to rent out their apartments for much shorter periods. </h4> 
+
+          <p> In October 2016, after years of haggling betweeon Aribnb and New York officials, Governor Cuomo Signs a bill which allows authorities to fine hosts up to $7,500 if they are caught listing a property on a rental platform such as Airbnb (Senate Bill S6340A<a href="https://www.nysenate.gov/legislation/bills/2015/s6340/amendment/a" > <sup>1</sup> </a>). Just hours after that, Airbnb filed lawsuit in Manhattan federal court. </p>
+
+
+          <p> The affordable housing advocates concern that Airbnb is making it easier to illegally rent out apartment units for short stints to travelers, taking units off the market for full-time residents and driving housing costs higher is understandable. I have much sympathy with those concerns, but as a longitme Airbnb host and guest, I think that complete shut down of Airbnb activity in New York City, where hotels and rental agencies have special intersts, needs more objective delibration. </p>
+
+          <p> For example, to address the similar issue, Airbnb introduced a maximum of 90 days per year in London, and 60 days per year in Amsterdam <a href=" https://www.theguardian.com/technology/2016/dec/03/airbnb-regulation-london-amsterdam-housing" > <sup>2</sup> </a>. Or in Berlin as Europe's top destination, Airbnb hosts can offer a room but not an entire house <a href="https://www.theguardian.com/technology/2016/may/01/berlin-authorities-taking-stand-against-airbnb-rental-boom"> <sup>3</sup></a>, while the high court in New South Wales state in Australia recently ruled that "they can't make rules to ban short-term rentals" including Airbnb<a href="http://www.smh.com.au/business/property/apartment-dwellers-lose-out-as-airbnb-here-to-stay-court-rules-20160722-gqbhcz.html"> <sup>4</sup></a>. </p> 
+        </div>
+      </div>
+
+      <div class="row top20">
+        <div class="col-xs-12">
+          <div class="embed-responsive checkin-map" style="position: relative; overflow: hidden; padding-bottom: 62%;">
+            <iframe width="100%" height="800" frameborder="0" src="https://amirhs.carto.com/viz/73708970-bb0b-11e6-ae1e-0ef7f98ade21/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="col-xs-12 text-center">
+          <p class="caption"><strong> When did a place get a reviewed</strong> Every reviews since 2010 </p>
+        </div>
+      </div>
+
+      <div class="row section">
+        <div class="col-xs-12">
+          <h3> What does the data say? </h3>
+            <p>I have downloaded Airbnb data from <a href="http://insideairbnb.com/get-the-data.html"> here</a>. As you can see in the below map, Airbnb has grown really fast in New York City in past few years. New York City is indeed the AirBnB largest market in the United States. The city’s hosts generated about $1 billion in revenue in 2015</p>
+
+            <p> In the below map, you can see a time line of rented properties since 2010 in all 5 boroughs. The birght dots on the map shows the location of a property when it recieved a review from a guest. If you are a member of Airbnb, you'd know that reviews are the glue of the community. It lets you as a host or guest to leave detailed review of your expreince. Recieving a positive review from a guest is absolutely vital for a host to have future guests and they usually encourage guests to leave a reivew. Therefore, in the lack of having access to detailed calendar of hosts, I took it as a good proximation of the last time a property was rented.</p>
+        </div>
+      </div>
+
+    <section id="scrollytelling">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="title-area wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+              <h2 class="title">Scroll through the Data</h2>
+              <p>Each square represnets 1000 hosts adding up to 40,000</p>
+            </div>
+          </div>
+            <div class="col-md-12">
+                <div id='graphic'>
+                  <div id='sections'>
+                    <section class="step">
+                      <div class="title">Not every host is the same!</div>
+                      Let's see who is doing what!
+                    </section>
+                    <section class="step">
+                      <div class="title"> All of the hosts</div>
+                      One issue is that some people use Airbnb as business. Therefore, they have posted <b style="color:"#2F4F4F" >mutliple</b> listings on the site while normally people have <b style="color:"#778899">one</b> place to live in  
+                    </section>
+                    <section class="step">
+                      <div class="title">how many listing?</div>
+                       majority of hosts only have one property
+                    </section>
+                    <section class="step">
+                      <div class="title">whole apartment</div>
+                      From the ones who have multiple listings, just a small portion are renting their whole apartment.
+                    </section>
+                    <section class="step">
+                      <div class="title">days avaible</div>
+                      And even a tinyer group rent out their place more than 60 days annually.
+                    </section>
+                  </div>
+                  <div id='vis'>
+                  </div>
+                  <div id="extra-space">
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        </div>
+      </div>
+
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<!-- Bootstrap -->
+<script src="assets/js/bootstrap.js"></script>
+<!-- Slick Slider -->
+<script type="text/javascript" src="assets/js/slick.js"></script>
+<!-- Wow animation -->
+<script type="text/javascript" src="assets/js/wow.js"></script>
+<!-- Off-canvas Menu -->
+<script src="assets/js/classie.js"></script>
+
+<!-- Custom js -->
+<script type="text/javascript" src="assets/js/custom.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+    <script src="js/scroller.js"></script>
+    <script src="js/sections.js"></script>    
+
+</body>
