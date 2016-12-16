@@ -124,7 +124,6 @@ img{
 
 
 .overlay{
-	background-color: rgba(0, 0, 0, 0.6);
 	height: 100%;
 	left: 0;
 	position: absolute;
@@ -921,9 +920,9 @@ img{
 
 
 .download-overlay {
-  background: rgba(15, 22, 30, 0.8) none repeat scroll 0 0;
-  color: #ffffff;
-  display: inline;
+/*  background: rgba(15, 22, 30, 0.8) none repeat scroll 0 0;
+/**/  color: #ffffff;
+*/  display: inline;
   float: left;
   padding: 90px 0;
   width: 100%;
