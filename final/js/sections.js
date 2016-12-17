@@ -28,7 +28,7 @@ var scrollVis = function() {
 
   var wholeColorScale = d3.scaleOrdinal().domain([0, 1, 2]).range(["#fd5c63","#b14045", "#652427"])
 
-  var daysColorScale = d3.scaleOrdinal().domain([0, 1, 2, 3]).range(["#fd5c63","#b14045", "#652427", "#fd5c63"])
+  var daysColorScale = d3.scaleOrdinal().domain([0, 1, 2, 3]).range(["#fd5c63","#b14045", "#652427", "#190909"])
 
   var countScale = d3.scaleOrdinal().domain([1,2]).range([200, 650]);
   // xHeroScale
@@ -235,7 +235,7 @@ var scrollVis = function() {
             .attr("x", function(d, i) {
              return 18 * (i % 20);
             })
-            .attr("fill", "#2F4F4F")
+            .attr("fill", "#fd5c63")
 
   }
 
