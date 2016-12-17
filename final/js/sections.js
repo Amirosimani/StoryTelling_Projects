@@ -24,11 +24,11 @@ var scrollVis = function() {
       .range([height,0]);
 
 
-  var countColorScale = d3.scaleOrdinal().domain([1, 2]).range(["#2F4F4F", "#778899"])
+  var countColorScale = d3.scaleOrdinal().domain([1, 2]).range(["#fd5c63", "#b14045"])
 
-  var wholeColorScale = d3.scaleOrdinal().domain([0, 1, 2]).range(["#2F4F4F","#778899", "#A9A9A9"])
+  var wholeColorScale = d3.scaleOrdinal().domain([0, 1, 2]).range(["#fd5c63","#b14045", "#652427"])
 
-  var daysColorScale = d3.scaleOrdinal().domain([0, 1, 2, 3]).range(["#2F4F4F","#778899", "#A9A9A9", "#DCDCDC"])
+  var daysColorScale = d3.scaleOrdinal().domain([0, 1, 2, 3]).range(["#fd5c63","#b14045", "#652427", "#fd5c63"])
 
   var countScale = d3.scaleOrdinal().domain([1,2]).range([200, 650]);
   // xHeroScale
@@ -152,7 +152,7 @@ var scrollVis = function() {
       .attr("x", function(d, i) {
         return 18 * (i % 20);
       })
-      .attr("fill", "#c4cfcf")
+      .attr("fill", "#fd5c63")
   };
 
   /**

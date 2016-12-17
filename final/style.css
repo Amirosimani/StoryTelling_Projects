@@ -193,7 +193,7 @@ img{
 	display: inline;
 	float: left;
 	padding-top: 60px;
-	padding-right: 50px;
+	padding-right: 150px;
 	text-align: left;
 	width: 100%;
 }
@@ -201,7 +201,7 @@ img{
 
 .header-bottom-left h1 {
 	color: #fff;
-	font-size: 40px;
+	font-size: 10px;
 	font-weight: bold;
 	line-height: 60px;
 }
@@ -209,7 +209,7 @@ img{
 
 .header-bottom-left p {
 	color: #fff;
-	font-size: 16px;
+	font-size: 60px;
 	margin: 35px 0 0;
 }
 
