@@ -24,11 +24,11 @@ var scrollVis = function() {
       .range([height,0]);
 
 
-  var countColorScale = d3.scaleOrdinal().domain([1, 2]).range(["#fd5c63", "#b14045"])
+  var countColorScale = d3.scaleOrdinal().domain([1, 2]).range(["#fd5c63", "#3886B2"])
 
-  var wholeColorScale = d3.scaleOrdinal().domain([0, 1, 2]).range(["#fd5c63","#b14045", "#652427"])
+  var wholeColorScale = d3.scaleOrdinal().domain([0, 1, 2]).range(["#fd5c63","#3886B2", "#28607F"])
 
-  var daysColorScale = d3.scaleOrdinal().domain([0, 1, 2, 3]).range(["#fd5c63","#b14045", "#652427", "#190909"])
+  var daysColorScale = d3.scaleOrdinal().domain([0, 1, 2, 3]).range(["#fd5c63","#3886B2", "#28607F", "#d3d3d3"])
 
   var countScale = d3.scaleOrdinal().domain([1,2]).range([200, 650]);
   // xHeroScale
@@ -170,7 +170,7 @@ var scrollVis = function() {
     activateFunctions[2] = page2;
     activateFunctions[3] = page3;
     activateFunctions[4] = page4;
-    activateFunctions[5] = lastPage;
+    // activateFunctions[5] = lastPage;
 
 
     // updateFunctions are called while
@@ -209,10 +209,10 @@ var scrollVis = function() {
    */
 
 
-  function lastPage() {
-    var vis = d3.select("#vis");
-    vis.style("display", "none"); 
-  }
+  // function lastPage() {
+  //   var vis = d3.select("#vis");
+  //   vis.style("display", "none"); 
+  // }
 
   function page0() {
     var vis = d3.select("#vis");
