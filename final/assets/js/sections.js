@@ -170,7 +170,7 @@ var scrollVis = function() {
     activateFunctions[2] = page2;
     activateFunctions[3] = page3;
     activateFunctions[4] = page4;
-    // activateFunctions[5] = lastPage;
+    activateFunctions[5] = lastPage;
 
 
     // updateFunctions are called while
@@ -209,10 +209,10 @@ var scrollVis = function() {
    */
 
 
-  // function lastPage() {
-  //   var vis = d3.select("#vis");
-  //   vis.style("display", "none"); 
-  // }
+  function lastPage() {
+    var vis = d3.select("#vis");
+    vis.style("display", "none"); 
+  }
 
   function page0() {
     var vis = d3.select("#vis");
@@ -270,9 +270,6 @@ var scrollVis = function() {
     squares.transition()
     .attr("fill", function(d) {
       return daysColorScale(d.days)
-    // datapoints.filter(function(d) { return d.days == 2 })
-    //   style("fill", "red")
-
     })
 
   }
