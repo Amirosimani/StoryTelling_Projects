@@ -125,40 +125,40 @@
 
 
 svg.append("text")
-              .attr("id", "lables")
+              .attr("id", "lables1")
               .attr("class", "country-text")
               .attr("y", 475)
               .attr("x", boroughScale("Queens"))
               .attr("text-anchor","middle")
               .text("Queens")
-              .style("opacity", 0)
+              .attr("opacity", 0)
               .attr("style", "font-family: Verdana;font-size: 14px;");
 svg.append("text")
-              .attr("id", "lables")
+              .attr("id", "lables2")
               .attr("class", "country-text")
               .attr("y", 475)
               .attr("x", boroughScale("Staten Island"))
               .attr("text-anchor","middle")
               .text("Staten Island")
-              .style("opacity", 0)
+              .attr("opacity", 0)
               .attr("style", "font-family: Verdana;font-size: 14px;");
 svg.append("text")
-              .attr("id", "lables")
+              .attr("id", "lables3")
               .attr("class", "country-text")
               .attr("y", 475)
               .attr("x", boroughScale("Manhattan"))
               .attr("text-anchor","middle")
               .text("Manhattan")
-              .style("opacity", 0)
+              .attr("opacity", 0)
               .attr("style", "font-family: Verdana;font-size: 14px;");
 svg.append("text")
-              .attr("id", "lables")
+              .attr("id", "lables4")
               .attr("class", "country-text")
               .attr("y", 475)
               .attr("x", boroughScale("Brooklyn"))
               .attr("text-anchor","middle")
               .text("Brooklyn")
-              .attr("style", "opacity: 0")
+              .attr("opacity", 0)
               .attr("style", "font-family: Verdana;font-size: 14px;");
 
 
@@ -186,6 +186,10 @@ svg.append("text")
         .strength(0.1))
         .alphaTarget(0.5)
         .restart()
+      d3.select("#lables1").transition().duration(2000).style("opacity", 1);
+      d3.select("#lables2").transition().duration(2000).style("opacity", 1);
+      d3.select("#lables3").transition().duration(2000).style("opacity", 1);
+      d3.select("#lables4").transition().duration(2000).style("opacity", 1);
     })
 
     d3.select("#reset").on('click', function() {
@@ -193,7 +197,11 @@ svg.append("text")
         .strength(0.1))
         .alphaTarget(0.25)
         .restart()
-      d3.select("#lables").style("opacity", 0);
+
+      d3.select("#lables1").transition().duration(1000).style("opacity", 0);
+      d3.select("#lables2").transition().duration(1000).style("opacity", 0);
+      d3.select("#lables3").transition().duration(1000).style("opacity", 0);
+      d3.select("#lables4").transition().duration(1000).style("opacity", 0);
     })
 
     function ticked() {
