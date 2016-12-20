@@ -123,6 +123,7 @@ var scrollVis = function() {
   var squares = null;
   var inForce = false;
 
+
   /**
    * setupVis - creates initial elements for all
    * sections of the visualization.
@@ -170,7 +171,7 @@ var scrollVis = function() {
     activateFunctions[2] = page2;
     activateFunctions[3] = page3;
     activateFunctions[4] = page4;
-    activateFunctions[5] = lastPage;
+    activateFunctions[5] = page5;
 
 
     // updateFunctions are called while
@@ -207,12 +208,6 @@ var scrollVis = function() {
    * shows: intro title
    *
    */
-
-
-  function lastPage() {
-    var vis = d3.select("#vis");
-    vis.style("display", "none"); 
-  }
 
   function page0() {
     var vis = d3.select("#vis");
@@ -267,12 +262,22 @@ var scrollVis = function() {
 
   function page4() {
 
+    var vis = d3.select("#vis");
+    vis.style("display", "inline-block"); 
+    
     squares.transition()
     .attr("fill", function(d) {
       return daysColorScale(d.days)
     })
 
   }
+
+  function page5() {
+    var vis = d3.select("#vis");
+    vis.style("display", "none"); 
+  }
+    // var vis = d3.select("#vis");
+    // vis.style("display", "none"); 
 
 
   /**

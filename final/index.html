@@ -199,8 +199,14 @@
                       <section class="step">
                         <div class="title">For how long?</div>
                         <p>And finally, the ones that have rented their apartments for longer than 60 days, are colored <b style="color:#d3d3d3">grey</b>.</p>
-                        <br></br>
-                        <p>These are the people who have multiple apartments, renting them out entirely for an extended time.</p>
+                      </section>
+                      <section class="step">
+                        <div class="title">
+                          <br></br>
+                          <br></br>
+                          <br></br>
+                          <br></br>
+                        </div>
                       </section>
                     </div>
                     <div id='vis'>
@@ -210,14 +216,6 @@
           </div>
       </div>
     </section>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="title-area wow fadeInDown">
-                <h2 class="title"><span>Conclusion</span></h2>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
           <div class="row">
@@ -230,6 +228,15 @@
           </div>
     </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="bubble_chart"></div>
+          <button id="boroughs">Each borough</button>
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <!-- Bootstrap -->
@@ -247,7 +254,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 
     <script src="assets/js/scroller.js"></script>
-    <script src="assets/js/sections.js"></script>    
+    <script src="assets/js/sections.js"></script> 
+    <script src="assets/js/bubbles.js"></script>
+   
 
   </body>
 </html>
