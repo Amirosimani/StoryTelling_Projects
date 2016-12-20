@@ -42,8 +42,11 @@
 
   var radiusScale = d3.scaleSqrt().domain([10,800]).range([10, 80])
 
+  var boroughScale = d3.scaleOrdinal().domain(["Brooklyn","Queens","Staten Island","Manhattan"])
+                    .range(["180", "400", "530","720"]);
+
   var simulation = d3.forceSimulation()
-    .force("x", d3.forceX(width / 2).strength(0.05))
+    .force("x", d3.forceX(width / 2).strength(0.04))
     .force("y", d3.forceY(height / 2).strength(0.05))
     .force("collide", d3.forceCollide(function(d) {
       return radiusScale(d.host_listings_count) + 2
@@ -85,8 +88,6 @@
       })
 
 
-
-
     var nodes = svg.selectAll(".artist")
       .data(datapoints)
       .enter().append("circle")
@@ -102,6 +103,46 @@
 
     simulation.nodes(datapoints)
       .on('tick', ticked)
+
+
+svg.append("text")
+              .attr("id", "lables")
+              .attr("class", "country-text")
+              .attr("y", 460)
+              .attr("x", boroughScale("Queens"))
+              .attr("text-anchor","middle")
+              .text("Queens")
+              .style("opacity", 0)
+              .attr("style", "font-family: Verdana;font-size: 14px;");
+svg.append("text")
+              .attr("id", "lables")
+              .attr("class", "country-text")
+              .attr("y", 460)
+              .attr("x", boroughScale("Staten Island"))
+              .attr("text-anchor","middle")
+              .text("Staten Island")
+              .style("opacity", 0)
+              .attr("style", "font-family: Verdana;font-size: 14px;");
+svg.append("text")
+              .attr("id", "lables")
+              .attr("class", "country-text")
+              .attr("y", 460)
+              .attr("x", boroughScale("Manhattan"))
+              .attr("text-anchor","middle")
+              .text("Manhattan")
+              .style("opacity", 0)
+              .attr("style", "font-family: Verdana;font-size: 14px;");
+svg.append("text")
+              .attr("id", "lables")
+              .attr("class", "country-text")
+              .attr("y", 460)
+              .attr("x", boroughScale("Brooklyn"))
+              .attr("text-anchor","middle")
+              .text("Brooklyn")
+              .attr("style", "opacity: 0")
+              .attr("style", "font-family: Verdana;font-size: 14px;");
+
+
 
     d3.select("#boroughs").on('click', function() {
       // go get the force named 'x' from the simulation
@@ -133,6 +174,7 @@
         .strength(0.1))
         .alphaTarget(0.25)
         .restart()
+      d3.select("#lables").style("opacity", 0);
     })
 
     function ticked() {
