@@ -6,18 +6,23 @@
         .append("svg")
         .attr("height", height)
         .attr("width", width)
-
         
   var svg = root.append("g");
 
-  // var tip = d3.tip()
-  //     .attr('class', 'd3-tip')
-  //     .offset([-10, 0])
-  //     .html(function(d) {
-  //         return d.host_id
-  //     })
-
-  // g.call(tip);
+  var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+              return  d.host_name +
+                // "<br>" +
+                "<br><span style='color:#fd5c63;font-size:10pt' 'font-weight:bolder'> Number of listings:  </span>" +
+                "<span style='color:black;font-size:10pt' 'font-weight:bolder'> " +d.host_listings_count +
+                "<br><span style='color:#fd5c63;font-size:10pt' 'font-weight:bolder'> Neighbourhood:  </span>" +
+                "<span style='color:black;font-size:10pt' 'font-weight:bolder'> " +d.neighbourhood_cleansed +
+                "<br><span style='color:#fd5c63;font-size:10pt' 'font-weight:bolder'> Airbnb account:  </span>" +
+                "<span style='color:black;font-size:10pt' 'font-weight:bolder'> " + d.host_url + "</span>"
+      })
+  svg.call(tip);
   
   var defs = svg.append("defs")
 
@@ -96,9 +101,23 @@
         return radiusScale(d.host_listings_count)
       })
       .style("fill", function(d) {
-        // "url(#jon-snow)"
-        // kind of like "url(#" + "jon-snow" + ")"
         return "url(#" + d.host_id + ")"
+      })
+      .on('mouseover', function(d) {
+        var element = d3.select(this);
+          tip.show(d)
+            element.style("stroke-width", "3")
+            element.style("stroke", "#fd5c63")
+            element.style("opacity", 0.8)
+       })
+      .on('mouseout', function(d) {
+        var element = d3.select(this);
+          tip.hide(d)
+            element.style("opacity", 1) 
+            element.style("stroke-width", "0")
+      })
+      .on("click", function(d){ 
+        window.open(d.host_url, '_blank')
       })
 
     simulation.nodes(datapoints)
@@ -108,7 +127,7 @@
 svg.append("text")
               .attr("id", "lables")
               .attr("class", "country-text")
-              .attr("y", 460)
+              .attr("y", 475)
               .attr("x", boroughScale("Queens"))
               .attr("text-anchor","middle")
               .text("Queens")
@@ -117,7 +136,7 @@ svg.append("text")
 svg.append("text")
               .attr("id", "lables")
               .attr("class", "country-text")
-              .attr("y", 460)
+              .attr("y", 475)
               .attr("x", boroughScale("Staten Island"))
               .attr("text-anchor","middle")
               .text("Staten Island")
@@ -126,7 +145,7 @@ svg.append("text")
 svg.append("text")
               .attr("id", "lables")
               .attr("class", "country-text")
-              .attr("y", 460)
+              .attr("y", 475)
               .attr("x", boroughScale("Manhattan"))
               .attr("text-anchor","middle")
               .text("Manhattan")
@@ -135,7 +154,7 @@ svg.append("text")
 svg.append("text")
               .attr("id", "lables")
               .attr("class", "country-text")
-              .attr("y", 460)
+              .attr("y", 475)
               .attr("x", boroughScale("Brooklyn"))
               .attr("text-anchor","middle")
               .text("Brooklyn")

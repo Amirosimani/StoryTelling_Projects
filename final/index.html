@@ -58,24 +58,6 @@
             z-index: 20;
         }
 
-        .d3-tip:after {
-            box-sizing: border-box;
-            display: inline;
-            font-size: 10px;
-            width: 100%;
-            line-height: 1;
-            color: rgba(250, 250, 250, 250);
-            content: "\25BC";
-            position: absolute;
-            text-align: center;
-        }
-
-        .d3-tip.n:after {
-            margin: -1px 0 0 0;
-            top: 100%;
-            left: 0;
-        }
-
         .backimage {
            background-size: cover;
            background: url('assets/images/airbnb.jpg');
@@ -233,7 +215,6 @@
               <div class="col-md-12">
                   <div class="title-area wow fadeInUp">
                     <h2 class="title"> Who are these people?</h2>
-                    <!--<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>-->
                   </div>
               </div>
           </div>
@@ -247,6 +228,16 @@
           <button id="reset">Reset</button>
         </div>
       </div>
+    </div>
+
+    <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="title-area wow fadeInUp">
+                    <h2 class="title"> What is next?</h2>
+                  </div>
+              </div>
+          </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -263,6 +254,8 @@
     <script type="text/javascript" src="assets/js/custom.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
 
     <script src="assets/js/scroller.js"></script>
     <script src="assets/js/sections.js"></script> 
