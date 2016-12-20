@@ -6,27 +6,20 @@
         .append("svg")
         .attr("height", height)
         .attr("width", width)
+
         
   var svg = root.append("g");
+
+  // var tip = d3.tip()
+  //     .attr('class', 'd3-tip')
+  //     .offset([-10, 0])
+  //     .html(function(d) {
+  //         return d.host_id
+  //     })
+
+  // g.call(tip);
   
   var defs = svg.append("defs")
-
-  /*
-          <marker id="arrow" viewBox="0 -5 10 10" refX="0" refY="0" markerWidth="12" markerHeight="12" orient="auto">
-            <path d="M0,-5L10,0L0,5"></path>
-          </marker>
-    */
-    defs.append("marker")
-        .attr("id","arrow")
-        .attr("viewBox", "0 -5 10 10")
-        .attr("refX", 39)
-        // .attr("refY", 0)
-        .attr("refY", -2)
-        .attr("markerWidth", 6)
-        .attr("markerHeight", 6)
-        .attr("orient", "auto")
-        .append("path")
-        .attr("d", "M0,-5L10,0L0,5");
 
 
     /*
@@ -45,7 +38,7 @@
       .attr("width", 1)
       .attr("preserveAspectRatio", "none")
       .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
-      .attr("xlink:href", "snow.jpg")
+      .attr("xlink:href", 'http://placekitten.com/g/48/48')
 
   var radiusScale = d3.scaleSqrt().domain([10,800]).range([10, 80])
 
@@ -55,11 +48,6 @@
     .force("collide", d3.forceCollide(function(d) {
       return radiusScale(d.host_listings_count) + 2
     }))
-
-  /*
-    Create your simulation here
-    Bubble charts (can) require forceX, forceY and forceCollide
-  */
 
 
   d3.queue()
@@ -93,8 +81,7 @@
       .attr("preserveAspectRatio", "none")
       .attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
       .attr("xlink:href", function(d) {
-        // There's a column for the image path so we can just use that
-        return d.host_thumbnail_url
+        return d.host_picture_url
       })
 
 
@@ -107,7 +94,11 @@
       .attr("r", function(d) {
         return radiusScale(d.host_listings_count)
       })
-      .attr("fill", "blue")
+      .style("fill", function(d) {
+        // "url(#jon-snow)"
+        // kind of like "url(#" + "jon-snow" + ")"
+        return "url(#" + d.host_id + ")"
+      })
 
     simulation.nodes(datapoints)
       .on('tick', ticked)
